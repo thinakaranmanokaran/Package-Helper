@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	--light: #F6F5F2;
+	---dark: #1E201E;
+}
+
+@font-face {
+	font-family: 'francy';
+	src: url('./assets//fonts/Francy.ttf');
+}
+
+@font-face {
+	font-family: 'creatoBold';
+	src: url('./assets/fonts/CreatoDisplay-Bold.otf')
+}
+
+@font-face {
+	font-family: 'consolasItalic';
+	src: url('./assets/fonts/consolai.ttf');
+}
+
+@font-face {
+	font-family: 'consolas';
+	src: url('./assets/fonts/consola.ttf');
+}
+
+::-webkit-scrollbar{
+	width: 10px;
+	background: var(---dark);
+}
+
+::-webkit-scrollbar-thumb{
+	background: #f6f5f260;
+	border-radius: 20px;
+}
+
+*{
+	overflow-x: hidden;
+}
+
+::selection{
+	color: #76ABAE;
+	background: #EEEEEE;
+	/* border-radius: 10px; */
+}
