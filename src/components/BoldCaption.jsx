@@ -10,7 +10,7 @@ const BoldCaption = ({ selectedID }) => {
     <>
       {
         selectedBoldCaption.map((CapData, index) => (
-          <div key={index} className='text-light font-creatoBold text-2xl'>
+          <div key={index} className='text-light dark:text-dark font-creatoBold text-2xl'>
             {CapData.Caption}
           </div>
         ))

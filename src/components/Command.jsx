@@ -17,7 +17,7 @@ const Command = ({ selectedID, setCommandText }) => {
     <>
         {
           CommandLine.map((CommandData, index) => (
-            <div key={index} className='font-consolas text-2xl text-light opacity-70 '>{CommandData.Command}</div>
+            <div key={index} className='font-consolas  text-2xl text-light opacity-70 '>{CommandData.Command}</div>
           ))
         }
     </>

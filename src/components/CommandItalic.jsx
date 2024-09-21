@@ -9,7 +9,7 @@ const CommandItalic = ({ selectedID }) => {
     <>
       {
         TagLines.map((TagData, index) => (
-          <div key={index} className='font-consolasItalic text-2xl text-light opacity-40'>{TagData.TagLine}</div>
+          <div key={index} className='font-consolasItalic text-2xl  text-light opacity-40'>{TagData.TagLine}</div>
         ))
       }
     </>

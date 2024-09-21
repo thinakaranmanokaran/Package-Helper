@@ -9,7 +9,7 @@ const BoldCaption = ({ selectedID }) => {
     <>
       {
         selectedNormalCaption.map((CapData, index) => (
-          <div key={index} className='text-light font-creatoBold mt-3 opacity-40 text-2xl'>
+          <div key={index} className='text-light dark:text-dark font-creatoBold  opacity-40 text-2xl'>
             {CapData.Caption}
           </div>
         ))
