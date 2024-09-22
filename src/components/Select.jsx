@@ -16,7 +16,7 @@ const Select = ({ showCommands }) => {
                 {
                     SelectionDatas.map((select, index) => (
                         <div key={index} className='bg-light dark:bg-dark py-2 w-36 px-3'>
-                            <div key={index} onClick={() => showCommands(select.id)} className='text-dark dark:text-light font-creatoBold text-lg mb-1'>
+                            <div key={index} onClick={() => showCommands(select.id)} className='text-dark dark:text-light cursor-pointer font-creatoBold text-lg mb-1'>
                                 {select.selectionData}
                             </div>
                         </div>

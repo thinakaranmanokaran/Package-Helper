@@ -1,5 +1,5 @@
 const SelectionDatas =  [
-        { id: 1, selectionData: 'JavaScript' },
+        { id: 1, selectionData: 'React' },
         { id: 2, selectionData: 'Python' }
 ]
 
