@@ -18,7 +18,7 @@ const Body = () => {
           <Select selectedID={selectedID} showCommands={showCommands} />
         <div className='flex flex-col w-3/6 m-10 '>
           <BoldCaption selectedID={selectedID} />
-          <LinkCaption selectedID={selectedID} />
+          {/* <LinkCaption selectedID={selectedID} /> */}
           <NormalCaption selectedID={selectedID} />
         </div>
         <Console selectedID={selectedID} />

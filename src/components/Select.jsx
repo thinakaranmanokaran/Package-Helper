@@ -12,7 +12,7 @@ const Select = ({ showCommands }) => {
 
     const SelectionData = ({ showCommands }) => {
         return(
-            <>
+            <div className="h-40">
                 {
                     SelectionDatas.map((select, index) => (
                         <div key={index} className='bg-light dark:bg-dark py-2 w-36 px-3'>
@@ -22,7 +22,7 @@ const Select = ({ showCommands }) => {
                         </div>
                     ))
                 }
-            </>
+            </div>
         )
     }
 
