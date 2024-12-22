@@ -33,12 +33,3 @@ jobs:
             echo "Retrying... ($RETRY_COUNT/10)"
             sleep 5
           done
-
-      - name: Create a dummy commit
-        run: |
-          echo "Commit made on $(date)" >> commit.log
-          git config --global user.name "thinakaranmanokaran"
-          git config --global user.email "thinakaranmanohar@yahoo.com"
-          git add commit.log
-          git commit -m "Daily commit on $(date)"
-          git push
