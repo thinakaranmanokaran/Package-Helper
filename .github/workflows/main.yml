@@ -1,14 +1,14 @@
-name: GitHub Auto Commit Bot
+name: GitHub Auto Refresh Bot with Daily Commit
 
 on:
   schedule:
-    - cron: "0 0,4,8,12,16 * * *"  # Run at 00:00, 04:00, 08:00, 12:00, and 16:00 (5 times a day)
-  workflow_dispatch:  # Allow manual trigger
+    - cron: "0 */2 * * *"  # Run every 6 hours
+  workflow_dispatch:        # Allow manual trigger
 
 jobs:
-  run-commit-bot:
+  run-refresh-bot:
     runs-on: ubuntu-latest
-    timeout-minutes: 30  # Set maximum runtime to 30 minutes
+    timeout-minutes: 120   # Set maximum runtime to 6 hours
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
@@ -18,11 +18,27 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Install Puppeteer dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libnss3 libatk-bridge2.0-0 libx11-xcb1 libxcomposite1 libxdamage1 libxrandr2 libgbm1 libasound2 libpangocairo-1.0-0 libgtk-3-0
+
+      - name: Run GitHub Refresh Bot with Retry
+        run: |
+          RETRY_COUNT=0
+          until [ "$RETRY_COUNT" -ge 10 ]
+          do
+            node index.js --no-sandbox --disable-setuid-sandbox && break
+            RETRY_COUNT=$((RETRY_COUNT+1))
+            echo "Retrying... ($RETRY_COUNT/10)"
+            sleep 5
+          done
+
       - name: Create a dummy commit
         run: |
           echo "Commit made on $(date)" >> commit.log
-          git config --global user.name "your-github-username"
-          git config --global user.email "your-email@example.com"
+          git config --global user.name "thinakaranmanokaran"
+          git config --global user.email "thinakaranmanohar@yahoo.com"
           git add commit.log
-          git commit -m "Auto commit on $(date)"
+          git commit -m "Daily commit on $(date)"
           git push
