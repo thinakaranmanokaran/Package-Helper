@@ -2,12 +2,12 @@ name: GitHub Auto Refresh Bot with Daily Commit
 
 on:
   schedule:
-    - cron: "*/2 * * * *"  # Run every 2 minutes
+    - cron: "0 */2 * * *"  # Run every 6 hours
   workflow_dispatch:        # Allow manual trigger
 
 jobs:
   run-refresh-bot:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     timeout-minutes: 120   # Set maximum runtime to 6 hours
     steps:
       - name: Checkout Repository
@@ -21,7 +21,7 @@ jobs:
       - name: Install Puppeteer dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y libnss3 libatk-bridge2.0-0 libx11-xcb1 libxcomposite1 libxdamage1 libxrandr2 libgbm1 libasound2t64 libpangocairo-1.0-0 libgtk-3-0
+          sudo apt-get install -y libnss3 libatk-bridge2.0-0 libx11-xcb1 libxcomposite1 libxdamage1 libxrandr2 libgbm1 libasound2 libpangocairo-1.0-0 libgtk-3-0
 
       - name: Run GitHub Refresh Bot with Retry
         run: |
