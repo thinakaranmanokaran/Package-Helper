@@ -2,8 +2,8 @@ name: Auto Commit Every 2 Minutes
 
 on:
   schedule:
-    - cron: '*/2 * * * *'  # Runs every 2 minutes
-  workflow_dispatch:  # Allows manual trigger
+    - cron: '*/2 * * * *'
+  workflow_dispatch:
 
 jobs:
   auto-commit:
@@ -15,12 +15,12 @@ jobs:
 
       - name: Configure Git
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "Thinakaran Manokaran"
+          git config --global user.email "your-email@example.com"
 
       - name: Make Changes
         run: |
-          echo "Last commit: $(date)" > last-commit.txt  # Example change
+          echo "Last commit: $(date)" > last-commit.txt
           git add .
 
       - name: Commit and Push Changes
