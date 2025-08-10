@@ -1,29 +1,32 @@
-name: Auto Commit Every 2 Minutes
+name: Auto Commit Every Hour
 
 on:
   schedule:
-    - cron: '*/2 * * * *'
-  workflow_dispatch:
+    - cron: "0 * * * *" # Runs every hour
+  workflow_dispatch: # Allow manual trigger too
 
 jobs:
-  auto-commit:
+  commit:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
 
-      - name: Configure Git
+      - name: Set up Git
         run: |
-          git config --global user.name "Thinakaran Manokaran"
-          git config --global user.email "your-email@example.com"
+          git config --global user.name "GitHub Actions Bot"
+          git config --global user.email "actions@github.com"
 
-      - name: Make Changes
+      - name: Make changes
         run: |
-          echo "Last commit: $(date)" > last-commit.txt
+          # Example: update a timestamp file
+          echo "Last update: $(date)" > last_update.txt
+
+      - name: Commit and push
+        run: |
           git add .
-
-      - name: Commit and Push Changes
-        run: |
-          git commit -m "Auto commit: $(date)" || echo "No changes to commit"
-          git push
+          git commit -m "Auto commit at $(date)" || echo "No changes to commit"
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }} HEAD:main
