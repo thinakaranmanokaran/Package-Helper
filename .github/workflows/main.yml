@@ -1,19 +1,21 @@
 name: Auto Commit Every Hour
 
+permissions:
+  contents: write
+
 on:
   schedule:
-    - cron: "0 * * * *" # Runs every hour
-  workflow_dispatch: # Allow manual trigger too
+    - cron: "0 * * * *"
+  workflow_dispatch:
 
 jobs:
   commit:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          persist-credentials: false
+          persist-credentials: true
 
       - name: Set up Git
         run: |
@@ -22,11 +24,10 @@ jobs:
 
       - name: Make changes
         run: |
-          # Example: update a timestamp file
           echo "Last update: $(date)" > last_update.txt
 
       - name: Commit and push
         run: |
           git add .
           git commit -m "Auto commit at $(date)" || echo "No changes to commit"
-          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }} HEAD:main
+          git push
